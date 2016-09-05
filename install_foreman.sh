@@ -5,9 +5,9 @@
 ###############################################################################
 
 # install ssh server and foreman dependencies
-RUN dnf -y install ruby{,-devel,gems} java-1.8.0-openjdk.x86_64 \
-           rubygem-{nokogiri,bundler,unf_ext,rdoc} redhat-rpm-config \
-           nodejs git postgresql-devel gcc-c++ make hostname sqlite-devel
+dnf -y install ruby{,-devel,gems} java-1.8.0-openjdk.x86_64 \
+       rubygem-{nokogiri,bundler,unf_ext,rdoc} redhat-rpm-config \
+       nodejs git postgresql-devel gcc-c++ make hostname sqlite-devel
 
 
 ###############################################################################
@@ -19,10 +19,10 @@ mkdir -p /usr/src/app
 cd /usr/src/app
 
 # setup envirnament variables
-ENV RAILS_ENV=production
-ENV FOREMAN_APIPIE_LANGS=en
-ENV REPO_URL=https://github.com/theforeman/foreman.git
-ENV REPO_BRANCH=1.12-stable
+RAILS_ENV=production
+FOREMAN_APIPIE_LANGS=en
+REPO_URL=https://github.com/theforeman/foreman.git
+REPO_BRANCH=1.12-stable
 
 # get latest foreman repo, configure and install dependencies
 git clone ${REPO_URL} -b ${REPO_BRANCH} /usr/src/app
