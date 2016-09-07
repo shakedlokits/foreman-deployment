@@ -45,5 +45,4 @@ git clean -f
 bundle --without mysql:mysql2:jenkins:openid:libvirt
 
 # propegate foreman database
-RAILS_ENV=test
-rake db:migrate
+RAILS_ENV=test rake db:migrate
