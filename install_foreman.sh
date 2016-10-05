@@ -7,7 +7,8 @@
 # install ssh server and foreman dependencies
 dnf -y install ruby{,-devel,gems} java-1.8.0-openjdk.x86_64 \
        rubygem-{nokogiri,bundler,unf_ext,rdoc} redhat-rpm-config \
-       nodejs git postgresql-devel gcc-c++ make hostname sqlite-devel
+       nodejs git postgresql-devel gcc-c++ make hostname sqlite-devel \
+       libxslt-devel.x86_64 libxml2-devel.x86_64
 
 
 ###############################################################################
@@ -40,6 +41,9 @@ git config --global user.email "slokits@redhat.com"
 git config --global user.name "Shaked Lokits"
 git am < simplecov-support.patch
 git clean -f
+
+# force nokogiri to use system libs
+bundle config build.nokogiri --use-system-libraries
 
 # install required packages
 bundle --without mysql:mysql2:jenkins:openid:libvirt
